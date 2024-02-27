@@ -1,21 +1,50 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-if (args.Length < 2)
+string filePath;
+long steamID;
+byte[] steamIDBytes;
+
+// Check if the file path is provided
+if (args.Length < 1)
 {
-    Console.WriteLine("Usage: <program> <file_path> <steam_ID>");
+    Console.WriteLine("Usage: <program> <file_path> [steam_ID]");
+    Console.WriteLine("Or drag and drop the file onto the executable and enter the Steam ID when prompted.");
     return;
 }
-
-string filePath = args[0];
-long steamID = long.Parse(args[1]);
-byte[] steamIDBytes = BitConverter.GetBytes(steamID);
+else
+{
+    filePath = args[0];
+}
 
 if (!File.Exists(filePath))
 {
     Console.WriteLine("File does not exist.");
     return;
 }
+
+// Check if Steam ID is provided, if not, ask for it
+if (args.Length < 2 || string.IsNullOrEmpty(args[1]))
+{
+    Console.Write("Please enter the Steam ID: ");
+    var steamIDInput = Console.ReadLine();
+    if (!long.TryParse(steamIDInput, out steamID))
+    {
+        Console.WriteLine("Invalid Steam ID.");
+        return;
+    }
+}
+else
+{
+    if (!long.TryParse(args[1], out steamID))
+    {
+        Console.WriteLine("Invalid Steam ID provided.");
+        return;
+    }
+}
+
+steamIDBytes = BitConverter.GetBytes(steamID);
+
 
 using (var f = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite))
 {
