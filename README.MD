@@ -44,7 +44,7 @@ Contributions to the tool are welcome! Please feel free to fork the repository, 
 
 ## License
 
-This tool is released under the MIT License. See the LICENSE file for more details.
+This tool is released under the MIT License. 
 
 ## Disclaimer
 
