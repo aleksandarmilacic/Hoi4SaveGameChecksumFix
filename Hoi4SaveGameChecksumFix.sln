@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoi4SaveGameChecksumFix", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{049A5F0E-7844-4DB4-9B7A-DF52E4C86A13}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
 		README.MD = README.MD
 	EndProjectSection
 EndProject
